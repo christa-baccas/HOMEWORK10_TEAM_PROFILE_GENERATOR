@@ -1,0 +1,24 @@
+{
+  "name": "HOMEWORK10_TEAM_PROFILE_GENERATOR",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christa-baccas/HOMEWORK10_TEAM_PROFILE_GENERATOR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christa-baccas/HOMEWORK10_TEAM_PROFILE_GENERATOR/issues"
+  },
+  "homepage": "https://github.com/christa-baccas/HOMEWORK10_TEAM_PROFILE_GENERATOR#readme"
+}
