@@ -3,7 +3,6 @@ const Employee = require('../lib/Employee')
 
 describe("Employee class", () => {
   it("should show the input types of each argument passed", () => {
-    //results upon entering
     const employee = new Employee('Christa', 44, 'christa.baccas@gmail.com');
 
     expect(employee.name).toEqual(expect.any(String));
