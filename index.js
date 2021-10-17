@@ -42,12 +42,55 @@ const addManager = () => {
     console.log(teamMembers)
     });
 };
-addManager();
 
 // //prompt for Engineer
+const addEmployee = () => {
+return inquirer.prompt([
+    // select intern or engineer
+    {
+      type: "list",
+      message: "Please select the employees title.",
+      name: "title",
+      choices: ['Engineer', 'Intern']
+    },
 
-// //prompt for Intern
+    //enter the name of the employee
+    {
+        type: "input",
+        message: "Please enter the name of the employee",
+        name: "id",
+      },
+    //enter the id of the employee
+    {
+      type: "input",
+      message: "Please enter the ID of the employee",
+      name: "id",
+    },
+    //enter the email of the employee
+    {
+      type: "input",
+      message: "Please enter the email of the employee",
+      name: "email",
+    },
+    //enter the github of the employee
+    {
+      type: "input",
+      message: "Please enter the github for the employee",
+      name: "number",
+    }
+  ]).then((EmployeeData) => {
+    //Push the engineer and intern data into the empty array 
+    teamMembers.push(EmployeeData);
+    console.log(teamMembers)
+    });
+};
+// addManager();
+addEmployee();
 
-const writeFile = () => {
-    
-}
+// generates the html page
+// const writeFile = (fileName, data, err) => {
+//     fs.writeFile('./dis/index.htm', data, err => {
+//         err ? console.log(err) : console.log("Html Files Created!")
+//       })
+// }
+// writeFile();
