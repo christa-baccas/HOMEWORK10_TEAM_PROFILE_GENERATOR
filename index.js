@@ -39,7 +39,7 @@ const addManager = () => {
   ]).then((ManagerData) => {
     //Push the Manager data into the empty array 
     teamMembers.push(ManagerData);
-    console.log(teamMembers)
+    // console.log(teamMembers)
     });
 };
 
@@ -58,7 +58,7 @@ return inquirer.prompt([
     {
         type: "input",
         message: "Please enter the name of the employee",
-        name: "id",
+        name: "name",
       },
     //enter the id of the employee
     {
@@ -72,20 +72,29 @@ return inquirer.prompt([
       message: "Please enter the email of the employee",
       name: "email",
     },
-    //enter the github of the employee
+    //enter the github of the engineer
     {
       type: "input",
       message: "Please enter the github for the employee",
-      name: "number",
+      name: "github",
+      when: (input) => input.title === 'Engineer'
+    },
+    //enter the school of the intern
+    {
+        type: "input",
+        message: "Please enter the name of the school the intern attends.",
+        name: "school",
+        when: (input) => input.title === 'Inter'
     }
-  ]).then((EmployeeData) => {
+  ])
+};
+addManager()
+.then((EmployeeData) => {
+    addEmployee();
     //Push the engineer and intern data into the empty array 
     teamMembers.push(EmployeeData);
     console.log(teamMembers)
     });
-};
-// addManager();
-addEmployee();
 
 // generates the html page
 // const writeFile = (fileName, data, err) => {
@@ -94,3 +103,5 @@ addEmployee();
 //       })
 // }
 // writeFile();
+
+// init to run function
