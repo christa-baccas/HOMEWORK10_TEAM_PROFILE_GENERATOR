@@ -75,9 +75,9 @@ const addEmployee = () => {
           return addIntern();
           break;
         case "Exit":
-        // console.log(generateHTML())
-        // renderEmployees(teamMemberList);
-        generateHTML();
+          // console.log(generateHTML())
+          // renderEmployees(teamMemberList);
+          generateHTML();
           break;
         default:
           console.log(`HTML page generated with team members!`);
@@ -114,7 +114,6 @@ const addEngineer = () => {
         message: "Please enter the github for the engineer",
         name: "github",
       },
-
     ])
     .then((engineerData) => {
       const engineer = new Engineer(
@@ -172,83 +171,84 @@ const addIntern = () => {
 
 // //generates the html page
 const generateHTML = () => {
-   const pageData =  `<!DOCTYPE html>
+  const pageData = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
         <title> Team Profile</title>
     </head>
     <body>
-        <header>
+        <header >
             <h1>My Team Profile</h1>
         </header>
-        ${renderEmployees(teamMemberList)}
+        <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          ${renderEmployees(teamMemberList)}
+        </div>
+        </div>
     </body>
-    </html>`
-    fs.writeFile('./dis/index.html',pageData, err => {
-        err ? console.log(err): console.log('file written')
-    })
+    </html>`;
+  fs.writeFile("./dis/index.html", pageData, (err) => {
+    err ? console.log(err) : console.log("file written");
+  });
 };
 
-const renderEmployees = (team) => { 
-    return team.map(emp => {
-        // console.log(emp.getRole());
-        switch (emp.getRole()) {
-            case 'Engineer':
-                return `<div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">${emp.getName()}</h5>
-                      <h5 class="card-title">${emp.getRole()}</h5>
-                      <p class="card-text">${emp.getEmail()}</p>
-                      <p class="card-text">${emp.getId()}</p>
-                      <p class="card-text">${emp.getGithub()}</p>
-                    </div>
+const renderEmployees = (team) => {
+  return team
+    .map((emp) => {
+      // console.log(emp.getRole());
+      switch (emp.getRole()) {
+        case "Manager":
+          return `<div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">${emp.getName()}</h5>
+              <h5 class="card-title">${emp.getRole()}</h5>
+              <p class="card-text">${emp.getEmail()}</p>
+              <p class="card-text">${emp.getId()}</p>
+              <p class="card-text">${emp.getOfficeNumber()}</p>
+            </div>
+          </div>
+        </div>`;
+        case "Engineer":
+          return `<div class="col-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">${emp.getName()}</h5>
+                    <h5 class="card-title">${emp.getRole()}</h5>
+                    <p class="card-text">${emp.getEmail()}</p>
+                    <p class="card-text">${emp.getId()}</p>
+                    <p class="card-text">${emp.getGithub()}</p>
                   </div>
-                </div>`
-            case'Intern':
-            return `<div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">${emp.getName()}</h5>
-                      <h5 class="card-title">${emp.getRole()}</h5>
-                      <p class="card-text">${emp.getEmail()}</p>
-                      <p class="card-text">${emp.getId()}</p>
-                      <p class="card-text">${emp.getSchool()}</p>
-                    </div>
-                  </div>
-                </div>`
-            case'Manager':
-            return `<div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">${emp.getName()}</h5>
-                  <h5 class="card-title">${emp.getRole()}</h5>
-                  <p class="card-text">${emp.getEmail()}</p>
-                  <p class="card-text">${emp.getId()}</p>
-                  <p class="card-text">${emp.getOfficeNumber()}</p>
                 </div>
+              </div>`;
+        case "Intern":
+          return `<div class="col-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">${emp.getName()}</h5>
+                <h5 class="card-title">${emp.getRole()}</h5>
+                <p class="card-text">${emp.getEmail()}</p>
+                <p class="card-text">${emp.getId()}</p>
+                <p class="card-text">${emp.getSchool()}</p>
               </div>
-            </div>`
-            default: console.log('Error, getRole gave unexpected value')
-            return '';
-        }
-    }).join('')
-}
+            </div>
+          </div>`;
+        default:
+          console.log("Error, getRole function gave unexpected value");
+          return "";
+      }
+    })
+    .join("");
+};
 
-//fucntion that return html for each employee 
+//fucntion that return html for each employee
 //or
 //create a let outisde
-
-
-
-
 
 // //add team member to html page
 // const addMembersInfo = new promise((resolve, reject) =>{
@@ -268,4 +268,3 @@ const renderEmployees = (team) => {
 //         console.log(log);
 //     })
 // })
-
