@@ -37,40 +37,52 @@ const addManager = () => {
         message: "Please enter the office number for the manager",
         name: "number",
       },
-    ]).then((managerData) => {
-      const manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.number);
+    ])
+    .then((managerData) => {
+      const manager = new Manager(
+        managerData.name,
+        managerData.id,
+        managerData.email,
+        managerData.number
+      );
       //Push the data into the empty array
       teamMemberList.push(manager);
 
       addEmployee(); // prompt asking if youd like to add an engineer or intern
-
     });
 };
 addManager();
 
 // prompt question to add an employee (engineer or intern)
 const addEmployee = () => {
-    return inquirer
-      .prompt([
-        // select intern or engineer
-        {
-          type: "list",
-          message: "Please select the employees title.",
-          name: "title",
-          choices: ['Engineer', 'Intern'],
-        }
-      ]).then((data) => {
-            //if statment checking what question prompt should run (engineer or intern or none at all)
-            switch (data.title) {
-                case 'Engineer': return addEngineer();
-                    break;
-                case 'Intern': return addIntern();
-                    break;
-                default: console.log(`HTML page generated with team members!`)
-                    break;
-            }
-        });
-    };
+  return inquirer
+    .prompt([
+      // select intern or engineer
+      {
+        type: "list",
+        message: "Please select the employees title.",
+        name: "title",
+        choices: ["Engineer", "Intern", "Exit"],
+      },
+    ])
+    .then((data) => {
+      //if statment checking what question prompt should run (engineer or intern or none at all)
+      switch (data.title) {
+        case "Engineer":
+          return addEngineer();
+          break;
+        case "Intern":
+          return addIntern();
+          break;
+        case "Exit":
+          return console.log('Generate HTML');
+          break;
+        default:
+          console.log(`HTML page generated with team members!`);
+          break;
+      }
+    });
+};
 
 //prompt questuons for Engineer
 const addEngineer = () => {
@@ -99,70 +111,62 @@ const addEngineer = () => {
         type: "input",
         message: "Please enter the github for the engineer",
         name: "github",
-        when: (input) => input.title === 'Engineeer',
       },
-    ]);
+
+    ])
+    .then((engineerData) => {
+      const engineer = new Engineer(
+        engineerData.name,
+        engineerData.id,
+        engineerData.email,
+        engineerData.github
+      );
+      teamMemberList.push(engineer);
+      addEmployee();
+      //console.log(teamMemberList);
+    });
 };
 
 //Prompt questions for Intern
-    const addIntern = () => {
-        return inquirer
-          .prompt([
-
-            //enter the name of the employee
-            {
-              type: "input",
-              message: "Please enter the name of the employee",
-              name: "name",
-            },
-            //enter the id of the employee
-            {
-              type: "input",
-              message: "Please enter the ID of the employee",
-              name: "id",
-            },
-            //enter the email of the employee
-            {
-              type: "input",
-              message: "Please enter the email of the employee",
-              name: "email",
-            },
-            //enter the school of the intern
-            {
-              type: "input",
-              message: "Please enter the name of the school the intern attends.",
-              name: "school",
-            },
-            // would you like to add another employee
-            {
-              type: "confirm",
-              message: "Would you like to add another employee?",
-              name: "again",
-              default: false
-            }
-          ])
-        }
-// //     .then((engineerData, internData) => {
-//       addEmployee();
-
-//       const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
-//       const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
-
-//       //Push the Manager data into the empty array
-//       teamMemberList.push(engineer, intern);
-//       //teamMemberList.push(internData)
-//       console.log(teamMemberList);
-//     });
-// };
-
-// const askQuestionsAgain = (response) => {
-//     if(response.again === 'yes'){
-//         return addEmployee();
-//     }else{
-//         return false;
-//     }
-// }
-
+const addIntern = () => {
+  return inquirer
+    .prompt([
+      //enter the name of the intern
+      {
+        type: "input",
+        message: "Please enter the name of the intern",
+        name: "name",
+      },
+      //enter the id of the intern
+      {
+        type: "input",
+        message: "Please enter the ID of the intern",
+        name: "id",
+      },
+      //enter the email of the intern
+      {
+        type: "input",
+        message: "Please enter the email of the intern",
+        name: "email",
+      },
+      //enter the school of the intern
+      {
+        type: "input",
+        message: "Please enter the name of the school the intern attends.",
+        name: "school",
+      },
+    ])
+    .then((internData) => {
+      const intern = new Intern(
+        internData.name,
+        internData.id,
+        internData.email,
+        internData.school
+      );
+      teamMemberList.push(intern);
+      addEmployee();
+    });
+};
 
 // //generates the html page
 // const writeFile = (data) => {
@@ -172,4 +176,3 @@ const addEngineer = () => {
 // };
 // writeFile();
 
-// //init to run function
