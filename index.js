@@ -59,12 +59,12 @@ const addEmployee = () => {
           name: "title",
           choices: ['Engineer', 'Intern'],
         }
-      ]).then(() => {
+      ]).then((data) => {
             //if statment checking what question prompt should run (engineer or intern or none at all)
-            switch (addEmployee) {
-                case title === 'Engineer': return addEngineer();
+            switch (data.title) {
+                case 'Engineer': return addEngineer();
                     break;
-                case title === 'Intern': return addIntern();
+                case 'Intern': return addIntern();
                     break;
                 default: console.log(`HTML page generated with team members!`)
                     break;
@@ -104,52 +104,44 @@ const addEngineer = () => {
     ]);
 };
 
+//Prompt questions for Intern
+    const addIntern = () => {
+        return inquirer
+          .prompt([
 
-
-
-
-
-
-
-
-// Prompt for Intern
-//     const addIntern = () => {
-//         return inquirer
-//           .prompt([
-
-//             //enter the name of the employee
-//             {
-//               type: "input",
-//               message: "Please enter the name of the employee",
-//               name: "name",
-//             },
-//             //enter the id of the employee
-//             {
-//               type: "input",
-//               message: "Please enter the ID of the employee",
-//               name: "id",
-//             },
-//             //enter the email of the employee
-//             {
-//               type: "input",
-//               message: "Please enter the email of the employee",
-//               name: "email",
-//             },
-//             //enter the school of the intern
-//             {
-//               type: "input",
-//               message: "Please enter the name of the school the intern attends.",
-//               name: "school",
-//             },
-//             // would you like to add another employee
-//             {
-//               type: "confirm",
-//               message: "Would you like to add another employee?",
-//               name: "again",
-//               default: false
-//             }
-//           ])
-
+            //enter the name of the employee
+            {
+              type: "input",
+              message: "Please enter the name of the employee",
+              name: "name",
+            },
+            //enter the id of the employee
+            {
+              type: "input",
+              message: "Please enter the ID of the employee",
+              name: "id",
+            },
+            //enter the email of the employee
+            {
+              type: "input",
+              message: "Please enter the email of the employee",
+              name: "email",
+            },
+            //enter the school of the intern
+            {
+              type: "input",
+              message: "Please enter the name of the school the intern attends.",
+              name: "school",
+            },
+            // would you like to add another employee
+            {
+              type: "confirm",
+              message: "Would you like to add another employee?",
+              name: "again",
+              default: false
+            }
+          ])
+        }
 // //     .then((engineerData, internData) => {
 //       addEmployee();
 
