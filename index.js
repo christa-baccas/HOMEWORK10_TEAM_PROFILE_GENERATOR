@@ -46,7 +46,6 @@ const addManager = () => {
       );
       //Push the data into the empty array
       teamMemberList.push(manager);
-      console.log(teamMemberList);
       // prompt asking if you'd like to add an engineer or intern
       addEmployee(); 
     });
@@ -204,8 +203,8 @@ const renderEmployees = (team) => {
             <div class="card-body">
               <h4 class="card-title">${emp.getName()}</h4>
               <h5 class="card-title my-title">${emp.getRole()}</h5>
-              <a href="mailto:${emp.getEmail()}">Email: ${emp.getEmail()}</a>
               <p class="card-text">ID: ${emp.getId()}</p>
+              <a href="mailto:${emp.getEmail()}">Email: ${emp.getEmail()}</a>
               <p class="card-text">Office Number: ${emp.getOfficeNumber()}</p>
             </div>
           </div>
@@ -216,8 +215,8 @@ const renderEmployees = (team) => {
                   <div class="card-body">
                     <h4 class="card-title">${emp.getName()}</h4>
                     <h5 class="card-title my-title">${emp.getRole()}</h5>
-                    <a href="mailto:${emp.getEmail()}">Email: ${emp.getEmail()}</a>
                     <p class="card-text">ID: ${emp.getId()}</p>
+                    <a href="mailto:${emp.getEmail()}">Email: ${emp.getEmail()}</a>
                     <a href="https://github.com/${emp.getGithub()}" target="_blank">Github: ${emp.getGithub()}</a>
                   </div>
                 </div>
@@ -228,8 +227,8 @@ const renderEmployees = (team) => {
               <div class="card-body">
                 <h4 class="card-title">${emp.getName()}</h4>
                 <h5 class="card-title my-title">${emp.getRole()}</h5>
-                <a href="mailto:Email: ${emp.getEmail()}">Email: ${emp.getEmail()}</a>
                 <p class="card-text">ID: ${emp.getId()}</p>
+                <a href="mailto:Email: ${emp.getEmail()}">Email: ${emp.getEmail()}</a>
                 <p class="card-text">School: ${emp.getSchool()}</p>
               </div>
             </div>
