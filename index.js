@@ -1,7 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 
-// const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -43,17 +42,18 @@ const addManager = () => {
         managerData.name,
         managerData.id,
         managerData.email,
-        managerData.officeNumber
+        managerData.number
       );
       //Push the data into the empty array
       teamMemberList.push(manager);
-
-      addEmployee(); // prompt asking if you'd like to add an engineer or intern
+      console.log(teamMemberList);
+      // prompt asking if you'd like to add an engineer or intern
+      addEmployee(); 
     });
 };
 addManager();
 
-// prompt question to add an employee (engineer or intern)
+//prompt question to add an employee (engineer or intern)
 const addEmployee = () => {
   return inquirer
     .prompt([
@@ -66,7 +66,7 @@ const addEmployee = () => {
       },
     ])
     .then((data) => {
-      //if statment checking what question prompt should run (engineer or intern or none at all)
+      //if statment checking what question prompt should run (engineer or intern or none at all and generate html )
       switch (data.title) {
         case "Engineer":
           return addEngineer();
@@ -122,7 +122,6 @@ const addEngineer = () => {
       );
       teamMemberList.push(engineer);
       addEmployee();
-      //console.log(teamMemberList);
     });
 };
 
@@ -198,7 +197,6 @@ const generateHTML = () => {
 const renderEmployees = (team) => {
   return team
     .map((emp) => {
-      // console.log(emp.getRole());
       switch (emp.getRole()) {
         case "Manager":
           return `<div class="col-4">
@@ -237,31 +235,8 @@ const renderEmployees = (team) => {
             </div>
           </div>`;
         default:
-          console.log("Error, the getRole function gave unexpected value");
-          return '';
+          console.log('"Error, the getRole function gave unexpected value');
+          return "";
       }
-    }).join('');
+    }).join("");
 };
-
-//fucntion that return html for each employee
-//or
-//create a let outisde
-
-// //add team member to html page
-// const addMembersInfo = new promise((resolve, reject) =>{
-//     const memberRole = getRole();
-//     if (memberRole === 'manager'){
-//         resolve('manager')
-//     }else if(memberRole === 'Engineer'){
-//         resolve('engineer')
-//     }else if(memberRole === 'Intern'){
-//         resolve('intern')
-//     }else{
-//         reject('error');
-//     }
-//     addMembersInfo.then((log) => {
-//         console.log(log);
-//     }).catch(() =>{
-//         console.log(log);
-//     })
-// })

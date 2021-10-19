@@ -18,7 +18,7 @@ describe("Employee class", () => {
 
     it("should get the engineers github and return their github username ", () => {
         const engineer = new Engineer('Christa', 44, 'christa.baccas@gmail.com', 'christa-baccas');
-        const result= `https://github.com/christa-baccas`
+        const result= `christa-baccas`
         expect(engineer.getGithub()).toEqual(result);
       });
   });
