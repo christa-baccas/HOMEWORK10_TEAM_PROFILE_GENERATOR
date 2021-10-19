@@ -43,12 +43,12 @@ const addManager = () => {
         managerData.name,
         managerData.id,
         managerData.email,
-        managerData.number
+        managerData.officeNumber
       );
       //Push the data into the empty array
       teamMemberList.push(manager);
 
-      addEmployee(); // prompt asking if youd like to add an engineer or intern
+      addEmployee(); // prompt asking if you'd like to add an engineer or intern
     });
 };
 addManager();
@@ -75,8 +75,6 @@ const addEmployee = () => {
           return addIntern();
           break;
         case "Exit":
-          // console.log(generateHTML())
-          // renderEmployees(teamMemberList);
           generateHTML();
           break;
         default:
@@ -86,7 +84,7 @@ const addEmployee = () => {
     });
 };
 
-//prompt questuons for Engineer
+//prompt questions for Engineer
 const addEngineer = () => {
   return inquirer
     .prompt([
@@ -186,14 +184,14 @@ const generateHTML = () => {
             <h1>My Team Profile</h1>
         </header>
         <div class="container">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4 my-row">
           ${renderEmployees(teamMemberList)}
         </div>
         </div>
     </body>
     </html>`;
   fs.writeFile("./dis/index.html", pageData, (err) => {
-    err ? console.log(err) : console.log("file written");
+    err ? console.log(err) : console.log("HTML file written!");
   });
 };
 
@@ -206,11 +204,11 @@ const renderEmployees = (team) => {
           return `<div class="col-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">${emp.getName()}</h5>
-              <h5 class="card-title">${emp.getRole()}</h5>
-              <p class="card-text">${emp.getEmail()}</p>
-              <p class="card-text">${emp.getId()}</p>
-              <p class="card-text">${emp.getOfficeNumber()}</p>
+              <h4 class="card-title">${emp.getName()}</h4>
+              <h5 class="card-title my-title">${emp.getRole()}</h5>
+              <a href="mailto:${emp.getEmail()}">Email: ${emp.getEmail()}</a>
+              <p class="card-text">ID: ${emp.getId()}</p>
+              <p class="card-text">Office Number: ${emp.getOfficeNumber()}</p>
             </div>
           </div>
         </div>`;
@@ -218,11 +216,11 @@ const renderEmployees = (team) => {
           return `<div class="col-4">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">${emp.getName()}</h5>
-                    <h5 class="card-title">${emp.getRole()}</h5>
-                    <p class="card-text">${emp.getEmail()}</p>
-                    <p class="card-text">${emp.getId()}</p>
-                    <p class="card-text">${emp.getGithub()}</p>
+                    <h4 class="card-title">${emp.getName()}</h4>
+                    <h5 class="card-title my-title">${emp.getRole()}</h5>
+                    <a href="mailto:${emp.getEmail()}">Email: ${emp.getEmail()}</a>
+                    <p class="card-text">ID: ${emp.getId()}</p>
+                    <a href="https://github.com/${emp.getGithub()}" target="_blank">Github: ${emp.getGithub()}</a>
                   </div>
                 </div>
               </div>`;
@@ -230,20 +228,19 @@ const renderEmployees = (team) => {
           return `<div class="col-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">${emp.getName()}</h5>
-                <h5 class="card-title">${emp.getRole()}</h5>
-                <p class="card-text">${emp.getEmail()}</p>
-                <p class="card-text">${emp.getId()}</p>
-                <p class="card-text">${emp.getSchool()}</p>
+                <h4 class="card-title">${emp.getName()}</h4>
+                <h5 class="card-title my-title">${emp.getRole()}</h5>
+                <a href="mailto:Email: ${emp.getEmail()}">Email: ${emp.getEmail()}</a>
+                <p class="card-text">ID: ${emp.getId()}</p>
+                <p class="card-text">School: ${emp.getSchool()}</p>
               </div>
             </div>
           </div>`;
         default:
-          console.log("Error, getRole function gave unexpected value");
-          return "";
+          console.log("Error, the getRole function gave unexpected value");
+          return '';
       }
-    })
-    .join("");
+    }).join('');
 };
 
 //fucntion that return html for each employee
