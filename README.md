@@ -26,7 +26,7 @@
   
 ## Installation 
 
-This is an application that needs to be ran via the command line. Right click the ’index.js file and open in integrated terminal. Once the terminal opens type node index.js to receive user prompt of question. Fill out each question and press enter after each over to move onto the next question. If user no longer wants to add a new member select Exit when prompted.
+This is an application that needs to be ran via the command line. Right click the index.js file and open in integrated terminal. Once the terminal opens type node index.js to receive user prompt of question. Fill out each question and press enter after move onto the next question. If user no longer wants to add a new member select Exit when prompted.
 
 ## Usage 
  
