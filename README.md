@@ -1,5 +1,5 @@
 ![License Badge](https://img.shields.io/badge/license-MIT-blue)
-# HOMEWORK10_TEAM_PROFILE_GENERATOR
+# TEAM_PROFILE_GENERATOR
 
 # OOP - Team Profile Generator
 
